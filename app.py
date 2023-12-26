@@ -15,7 +15,8 @@ def load_lottieurl(url):
 
 # --Assets--
 lottie_coding = load_lottieurl("https://lottie.host/bee10533-a107-4f07-83b9-8d2f6465ca9e/B1TuOwJoL3.json")
-img_ReverseShell = Image.open("images/ReverseShell.png")
+img_ReverseShell = Image.open("Images/ReverseShell.png")
+img_test = Image.open("Images/test.png")
 
 # --Header-- 
 with st.container():
