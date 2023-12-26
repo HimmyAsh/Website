@@ -1,1 +1,5 @@
+Insert your own images for your developed website.
 
+In the lines of code replace specified images with your own.
+
+Ex: img_test = Image.open("filepath/test.png)
