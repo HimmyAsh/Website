@@ -16,14 +16,14 @@ def load_lottieurl(url):
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-local_css("styles/style.css")
+local_css("style/style.css")
 
 
 # --Assets--
 lottie_coding = load_lottieurl("https://lottie.host/bee10533-a107-4f07-83b9-8d2f6465ca9e/B1TuOwJoL3.json")
 img_ReverseShell = Image.open("Images/ReverseShell.png")
 img_test = Image.open("Images/test.png")
-
+lottie_coding2 = load_lottieurl("https://lottie.host/90982730-c7c4-481e-9496-0bfc9da546c4/g18iuZrJjF.json")
 # --Header-- 
 with st.container():
     st.subheader("Hello, I am Cameron :wave:")
@@ -101,4 +101,4 @@ with st.container():
     with left_column:
         st.markdown(contact_me, unsafe_allow_html=True)
     with right_column:
-        st.empty()
+        st_lottie(lottie_coding2, height=300, key="contact me")
