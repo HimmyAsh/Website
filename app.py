@@ -1,7 +1,7 @@
-from PIL import Image
 import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
+from PIL import Image
 
 st.set_page_config(page_title="My Webpage", page_icon=":tada:", layout="wide")
 
@@ -11,6 +11,12 @@ def load_lottieurl(url):
     if r.status_code != 200:
         return None 
     return r.json()
+
+# Using local CSS
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+local_css("style/style.css")
 
 
 # --Assets--
@@ -61,3 +67,38 @@ with st.container():
             """
         )   
         st.markdown("[Windows Reverse Shell](https://github.com/HimmyAsh/HimmyAsh)")
+with st.container():
+    st.write("---")
+    st.header("My Projects")
+    st.write("##")
+    image_column, text_column = st.columns((1, 2))
+    with image_column:
+        st.image(img_test)
+    with text_column:
+        st.subheader("This is a test section")
+        st.write(
+            """
+            This is a test section for the time being. This project is still in development.
+
+            """
+        )
+
+with st.container():
+    st.write("---")
+    st.header("Contact Me")
+    st.write("##")
+
+    # formsubmit.co 
+    contact_me = """
+    <form action="https://formsubmit.co/cma.servers@gmail.com" method="POST">
+     <input type="text" name="name" placeholder="Your name" required>
+     <input type="email" name="email" placeholder="Email Address" required>
+     <input type="message" placeholder="Message" required>
+     <button type="submit">Send</button>
+</form>
+"""
+    left_column, right_column = st.columns(2)
+    with left_column:
+        st.markdown(contact_me, unsafe_allow_html=True)
+    with right_column:
+        st.empty()
