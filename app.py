@@ -4,6 +4,16 @@ from streamlit_lottie import st_lottie
 from PIL import Image
 
 
+
+##Hiding fullscreen options
+hide_img_fs = '''
+<style>
+button[title="View fullscreen"]{
+    visibility: hidden;}
+</style>
+'''
+
+
 #Defining lottier
 def load_lottieurl(url):
     r = requests.get(url)
@@ -20,11 +30,24 @@ Himmy_Ash1 = Image.open("Images/Icon.png")
 Himmy_Ash2 = Image.open("Images/LogoWhiteTxt.png")
 
 
+
 st.set_page_config(page_title="My Webpage", page_icon=":tada:", layout="wide")
+st.write("##")
 
 
-# side bar image
-st.sidebar.image(Himmy_Ash2, width=175)
+#adjusting the page size
+st.markdown("""
+        <style>
+               .block-container {
+                    padding-top: 0rem;
+                    padding-bottom: 0rem;
+                    padding-left: 0rem;
+                    padding-right: 5rem;
+                }
+        </style>
+        """, unsafe_allow_html=True)
+
+
 
 
 # Using local CSS
@@ -38,15 +61,21 @@ local_css("styles/style.css")
 header_container = st.container()
 with header_container:
     st.write("---")
-    left_column, right_column, logo_column = st.columns(3)
-    st.subheader("Hello, I am Cameron :wave:")
-    st.title("A cybersecurity/IT specialist")
-    st.write("I have a keen passion for the Cybersecurity field. I enjoy creating fun and interesting projects")
-    st.write("[My Projects](https://github.com/HimmyAsh)")
+    header_column, logo_column = st.columns([3, 1])  # Adjust the column ratios as needed
+    with header_column:
+        st.write("Hello, I am Cameron :wave:")
+        st.title("A cybersecurity/IT specialist")
+        st.write("I have a keen passion for the Cybersecurity field. I enjoy creating fun and interesting projects")
+        st.write("[My Projects](https://github.com/HimmyAsh)")
     with logo_column:
-        st.image(Himmy_Ash1, width=175)
+        st.image(Himmy_Ash1, width=125)
 
 
+
+
+
+# side bar image
+st.sidebar.image(Himmy_Ash2, width=150)
 # Changing the sidebar color
 st.markdown(
     """
@@ -66,7 +95,6 @@ with st.sidebar:
     st.write("[<span style='color:white; font-weight:bold;'>About me</span>](https://himmyash.streamlit.app/~/+/#about-me)", unsafe_allow_html=True)
     st.write("[<span style='color:white; font-weight:bold;'>My Projects</span>](https://himmyash.streamlit.app/~/+/#My-Projects)", unsafe_allow_html=True)
     st.write("[<span style='color:white; font-weight:bold;'>GitHub</span>](https://github.com/HimmyAsh)", unsafe_allow_html=True)
-
 
 
         
@@ -89,17 +117,33 @@ with st.container():
         st.write("[Socials]()")
     with right_column:
         st_lottie(lottie_coding, height=200, key="cyber")
+        
+# Adding custom CSS to adjust About Himmy
+st.markdown("""
+        <style>
+               .block-container {
+                    padding-top: 0rem;
+                    padding-bottom: 0rem;
+                    padding-left: 1rem;
+                    padding-right: 4rem;
+                }
+        </style>
+        """, unsafe_allow_html=True)
+
+   # st.write("[Socials]()")
+    #with right_column:
+      #  st_lottie(lottie_coding, height=200, key="cyber")
 
 # -- Projects ---
 with st.container():
     st.write("---")
     st.header("My projects")
-    st.write("##")
+   # st.write("##")
     image_column, text_column = st.columns((1, 2))
     with image_column:
         st.image(img_ReverseShell, width=225)
     with text_column: 
-        st.subheader("Creating a reverse shell into any windows machine")
+        st.write("Creating a reverse shell into any windows machine")
         st.write(
             """
             In this project we will be creating a reverse shell to remotely access any windows machine.
@@ -110,12 +154,12 @@ with st.container():
 with st.container():
     st.write("---")
     st.header("Socials")
-    st.write("##")
+    #st.write("##")
     image_column, text_column = st.columns((1, 2))
     with image_column:
         st.image(img_test, width=150)
     with text_column:
-        st.subheader("This is a test section")
+        st.write("This is a test section")
         st.write(
             """
             This is a test section for the time being. This project is still in development.
@@ -126,7 +170,7 @@ with st.container():
 with st.container():
     st.write("---")
     st.header("Contact Me")
-    st.write("##")
+    #st.write("##")
 
     # formsubmit.co 
     contact_me = """
