@@ -32,6 +32,7 @@ Himmy_Ash2 = Image.open("Images/LogoWhiteTxt.png")
 
 
 st.set_page_config(page_title="My Webpage", page_icon=":tada:", layout="wide")
+initial_sidebar_state=st.session_state.get('sidebar_state', 'expanded')
 st.write("##")
 
 
@@ -97,6 +98,8 @@ with st.sidebar:
     st.write("[<span style='color:white; font-weight:bold;'>GitHub</span>](https://github.com/HimmyAsh)", unsafe_allow_html=True)
 
 
+
+
         
     
 # -- About Himmy --
@@ -138,40 +141,43 @@ st.markdown("""
 with st.container():
     st.write("---")
     st.header("My projects")
-   # st.write("##")
-    image_column, text_column = st.columns((1, 2))
-    with image_column:
-        st.image(img_ReverseShell, width=225)
-    with text_column: 
+# -- Columns are labed by [#] -- 
+    project_column = st.columns(2)
+    with project_column[0]:  # text_column
         st.write("Creating a reverse shell into any windows machine")
         st.write(
             """
-            In this project we will be creating a reverse shell to remotely access any windows machine.
-            I don't codone this behavior in any malicious ways. This is for educational purposes only.
+            In this project, we will be creating a reverse shell to remotely access any windows machine.
+            I don't condone this behavior in any malicious ways. This is for educational purposes only.
             """
         )   
         st.markdown("[Windows Reverse Shell](https://github.com/HimmyAsh/HimmyAsh)")
+
+    #with project_column[1]:  # image_column
+        #st.image(img_ReverseShell, width=225)
+
+
+# Connect with me section
 with st.container():
     st.write("---")
-    st.header("Socials")
-    #st.write("##")
-    image_column, text_column = st.columns((1, 2))
-    with image_column:
-        st.image(img_test, width=150)
-    with text_column:
-        st.write("This is a test section")
+    st.header("Connect with me")
+    
+    Connect_column = st.columns(1)
+    
+    with Connect_column[0]:
+        st.write("Want to connect with me? Here are my socials!")
         st.write(
             """
             This is a test section for the time being. This project is still in development.
-
             """
         )
 
+
+# Contact Me section
 with st.container():
     st.write("---")
     st.header("Contact Me")
-    #st.write("##")
-
+    
     # formsubmit.co 
     contact_me = """
     <form action="https://formsubmit.co/cma.servers@gmail.com" method="POST">
@@ -179,10 +185,13 @@ with st.container():
      <input type="email" name="email" placeholder="Email Address" required>
      <input type="message" placeholder="Message" required>
      <button type="submit">Send</button>
-</form>
-"""
-    left_column, right_column = st.columns(2)
-    with left_column:
+    </form>
+    """
+    
+    Contact_Column = st.columns(2)
+    
+    with Contact_Column[0]:
         st.markdown(contact_me, unsafe_allow_html=True)
-    with right_column:
-        st_lottie(lottie_coding2, height=300, key="contact me")
+        
+    with Contact_Column[1]:
+        st.image(Himmy_Ash2, width=300)
