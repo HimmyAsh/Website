@@ -2,6 +2,7 @@ import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
 from PIL import Image
+import streamlit.components.v1 as components
 
 
 
@@ -12,7 +13,6 @@ button[title="View fullscreen"]{
     visibility: hidden;}
 </style>
 '''
-
 
 #Defining lottier
 def load_lottieurl(url):
@@ -34,6 +34,17 @@ Himmy_Ash2 = Image.open("Images/LogoWhiteTxt.png")
 st.set_page_config(page_title="My Webpage", page_icon=":tada:", layout="wide")
 initial_sidebar_state=st.session_state.get('sidebar_state', 'expanded')
 st.write("##")
+
+
+
+def run():
+    iframe_src = "https://github.com/HimmyAsh"
+    components.iframe(iframe_src)
+   # You can add height and width to the component of course.
+
+if __name__ == "__main__":
+    run()
+
 
 
 #adjusting the page size
@@ -193,5 +204,12 @@ with st.container():
     with Contact_Column[0]:
         st.markdown(contact_me, unsafe_allow_html=True)
         
+    with Contact_Column[1]:
+        st.image(Himmy_Ash2, width=300)
+
+
+
+
+
     with Contact_Column[1]:
         st.image(Himmy_Ash2, width=300)
