@@ -195,10 +195,3 @@ with st.container():
         
     with Contact_Column[1]:
         st.image(Himmy_Ash2, width=300)
-
-
-
-
-
-    with Contact_Column[1]:
-        st.image(Himmy_Ash2, width=300)
