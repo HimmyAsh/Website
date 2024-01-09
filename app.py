@@ -36,17 +36,6 @@ initial_sidebar_state=st.session_state.get('sidebar_state', 'expanded')
 st.write("##")
 
 
-
-def run():
-    iframe_src = "https://github.com/HimmyAsh"
-    components.iframe(iframe_src)
-   # You can add height and width to the component of course.
-
-if __name__ == "__main__":
-    run()
-
-
-
 #adjusting the page size
 st.markdown("""
         <style>
